@@ -30,10 +30,10 @@ public class ChunkManager : MonoBehaviour
             tmp.transform.position = prev.transform.position + new Vector3(10f, 0, 0);
             if(Random.Range(0,1f) < changeChance){
                 tmp.transform.position = new Vector3(tmp.transform.position.x, Random.Range(-2f,2f), tmp.transform.position.z);
-				tmp.transform.position += Vector3.right * Random.Range(0,8f);
+				tmp.transform.position += Vector3.right * Random.Range(0,6f);
             }
             else if (Random.Range(0,1f) < changeChance){
-                tmp.transform.position += Vector3.right * Random.Range(0,8f);
+                tmp.transform.position += Vector3.right * Random.Range(0,6f);
             }
             pool.Add(tmp);
         }
