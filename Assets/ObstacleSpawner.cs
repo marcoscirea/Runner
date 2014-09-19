@@ -6,6 +6,7 @@ public class ObstacleSpawner : MonoBehaviour {
     public float chance = 0.1f;
     public GameObject obstacle;
     ArrayList obstacles = new ArrayList();
+	public GameObject explosion;
 	// Use this for initialization
 	void Start () {
 	
@@ -28,5 +29,11 @@ public class ObstacleSpawner : MonoBehaviour {
                 Destroy(check);
             }
         }
+	}
+
+	public void remove(GameObject go){
+		obstacles.Remove(go);
+		Instantiate(explosion,go.transform.position, go.transform.rotation);
+		Destroy(go);
 	}
 }

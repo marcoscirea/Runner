@@ -7,9 +7,19 @@ public class Player : MonoBehaviour
     public float speed = 0.1f;
     bool dead = false;
 	public int life = 3;
+	int score=0;
+	int startingX;
+	GUIText scoreText;
+	GUIText lifeText;
+	ObstacleSpawner obstacleSpawner;
+
     // Use this for initialization
     void Start()
     {
+		startingX = (int) transform.position.x;
+		scoreText = GameObject.Find("Score").guiText;
+		lifeText = GameObject.Find("Life").guiText;
+		obstacleSpawner = GameObject.Find("ChunkManager").GetComponent<ObstacleSpawner>();
     }
     
     // Update is called once per frame
@@ -29,6 +39,9 @@ public class Player : MonoBehaviour
                 dead=true;
             }
 
+			score = (int) transform.position.x - startingX;
+			scoreText.text = score.ToString();
+
             transform.rotation = new Quaternion(0,0,0,0);
         }
         else{
@@ -39,9 +52,13 @@ public class Player : MonoBehaviour
     }
 
 	void OnCollisionEnter2D(Collision2D collision){
-		if (collision.gameObject.tag == "Obstacle")
+		if (collision.gameObject.tag == "Obstacle"){
 			life--;
+			lifeText.text = "Life="+life.ToString();
+			obstacleSpawner.remove(collision.gameObject);
+		}
 		if (life <=0)
 			dead=true;
 	}
+
 }
