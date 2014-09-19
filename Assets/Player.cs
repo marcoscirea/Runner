@@ -57,8 +57,10 @@ public class Player : MonoBehaviour
 			lifeText.text = "Life="+life.ToString();
 			obstacleSpawner.remove(collision.gameObject);
 		}
-		if (life <=0)
+		if (life <=0){
 			dead=true;
+			gameObject.transform.FindChild("Particle System").gameObject.SetActive(false);
+		}
 	}
 
 }
