@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 	GUIText scoreText;
 	GUIText lifeText;
 	ObstacleSpawner obstacleSpawner;
-
+	
     // Use this for initialization
     void Start()
     {
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     {
         if (!dead){
             //gameObject.rigidbody2D.AddForce(Vector2.right);
-            transform.position = transform.position + Vector3.right*speed;
+            transform.position = transform.position + Vector3.right*speed * Time.deltaTime;
             //Debug.Log(gameObject.rigidbody2D.velocity);   
 
             if (Input.GetKeyUp(KeyCode.Space) && rigidbody2D.velocity.y ==0)
